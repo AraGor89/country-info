@@ -15,7 +15,7 @@ export const publicApi = axios.create({ baseURL: base });
 export const errorHandler = (error: AxiosError | Error) => {
   store.dispatch(setLoading(false));
 
-  // TODO: handle error
+  // TODO: handle errors
   console.log(error.message);
 };
 
