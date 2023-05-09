@@ -6,17 +6,27 @@ interface Props {
   label: EDropType;
   options: string[];
   size: "small" | "medium";
-  handleDropDowns: (value: string | null, type: EDropType) => void;
+  handleSortChange?: (value: string | null) => void;
+  handleRegionChange?: (value: string | null) => void;
 }
 
-const DropDown: FC<Props> = ({ size, options, label, handleDropDowns }) => {
+const DropDown: FC<Props> = ({
+  size,
+  label,
+  options,
+  handleSortChange,
+  handleRegionChange,
+}) => {
   const [value, setValue] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
 
   // TODO: event fixe typification
   const handleValueChange = (_: any, newValue: string | null) => {
     setValue(newValue);
-    handleDropDowns(newValue, label);
+    if (label === EDropType.sortBy && handleSortChange)
+      handleSortChange(newValue);
+    if (label === EDropType.regions && handleRegionChange)
+      handleRegionChange(newValue);
   };
 
   return (

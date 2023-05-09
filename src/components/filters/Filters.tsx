@@ -7,10 +7,16 @@ import Input from "../common/Input";
 interface Props {
   search: string;
   handleInput: (name: string) => void;
-  handleDropDowns: (value: string | null, type: EDropType) => void;
+  handleSortChange: (value: string | null) => void;
+  handleRegionChange: (value: string | null) => void;
 }
 
-const Filters: FC<Props> = ({ search, handleDropDowns, handleInput }) => {
+const Filters: FC<Props> = ({
+  search,
+  handleInput,
+  handleSortChange,
+  handleRegionChange,
+}) => {
   const regionOptions = [
     "Africa",
     "Europe",
@@ -42,7 +48,7 @@ const Filters: FC<Props> = ({ search, handleDropDowns, handleInput }) => {
             size="medium"
             options={regionOptions}
             label={EDropType.regions}
-            handleDropDowns={handleDropDowns}
+            handleRegionChange={handleRegionChange}
           />
         </Typography>
 
@@ -50,7 +56,7 @@ const Filters: FC<Props> = ({ search, handleDropDowns, handleInput }) => {
           size="small"
           options={sortOptions}
           label={EDropType.sortBy}
-          handleDropDowns={handleDropDowns}
+          handleSortChange={handleSortChange}
         />
       </Typography>
     </Typography>

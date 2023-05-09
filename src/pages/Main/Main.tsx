@@ -8,7 +8,8 @@ const Main = () => {
     search,
     finalData,
     handleInput,
-    handleDropDowns,
+    handleSortChange,
+    handleRegionChange,
     handleDeleteCountry,
   } = useMain();
 
@@ -28,7 +29,8 @@ const Main = () => {
       <Filters
         search={search}
         handleInput={handleInput}
-        handleDropDowns={handleDropDowns}
+        handleSortChange={handleSortChange}
+        handleRegionChange={handleRegionChange}
       />
       <Table countries={finalData} handleDeleteCountry={handleDeleteCountry} />
     </Typography>
