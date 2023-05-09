@@ -1,6 +1,6 @@
 import { Typography, CircularProgress } from "@mui/material";
 
-const loading = () => {
+const Loading = () => {
   return (
     <Typography
       component="div"
@@ -23,4 +23,4 @@ const loading = () => {
   );
 };
 
-export default loading;
+export default Loading;

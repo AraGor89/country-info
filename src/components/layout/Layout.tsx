@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { Typography } from "@mui/material";
 import { useAppSelector } from "../../store/hooks";
-import Loading from "../common/loading";
+import Loading from "./../common/Loading";
 
 interface Props {
   children: ReactNode;

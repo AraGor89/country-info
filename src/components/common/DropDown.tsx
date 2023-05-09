@@ -1,5 +1,5 @@
 import { useState, FC } from "react";
-import { TextField, Autocomplete, Typography } from "@mui/material";
+import { TextField, Typography, Autocomplete } from "@mui/material";
 import { EDropType } from "../../types";
 
 interface Props {
@@ -13,7 +13,8 @@ const DropDown: FC<Props> = ({ size, options, label, handleDropDowns }) => {
   const [value, setValue] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
 
-  const handleValueChange = (e: any, newValue: string | null) => {
+  // TODO: event fixe typification
+  const handleValueChange = (_: any, newValue: string | null) => {
     setValue(newValue);
     handleDropDowns(newValue, label);
   };

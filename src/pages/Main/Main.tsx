@@ -4,8 +4,13 @@ import Table from "../../components/table";
 import useMain from "./useMain";
 
 const Main = () => {
-  const { finalData, handleDeleteCountry, handleDropDowns, handleInput } =
-    useMain();
+  const {
+    search,
+    finalData,
+    handleInput,
+    handleDropDowns,
+    handleDeleteCountry,
+  } = useMain();
 
   return (
     <Typography
@@ -20,7 +25,11 @@ const Main = () => {
         flexDirection: "column",
       }}
     >
-      <Filters handleDropDowns={handleDropDowns} handleInput={handleInput} />
+      <Filters
+        search={search}
+        handleInput={handleInput}
+        handleDropDowns={handleDropDowns}
+      />
       <Table countries={finalData} handleDeleteCountry={handleDeleteCountry} />
     </Typography>
   );

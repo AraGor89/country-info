@@ -1,16 +1,14 @@
-import { useState, FC, ChangeEvent } from "react";
+import { FC, ChangeEvent } from "react";
 import { TextField } from "@mui/material";
 
 interface Props {
+  search: string;
   handleInput: (name: string) => void;
 }
 
-const Input: FC<Props> = ({ handleInput }) => {
-  const [search, setSearch] = useState<string>("");
-
+const Input: FC<Props> = ({ search, handleInput }) => {
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e?.target?.value;
-    setSearch(value);
     handleInput(value);
   };
 

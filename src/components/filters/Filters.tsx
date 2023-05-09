@@ -5,11 +5,12 @@ import { EDropType } from "../../types";
 import Input from "../common/Input";
 
 interface Props {
+  search: string;
   handleInput: (name: string) => void;
   handleDropDowns: (value: string | null, type: EDropType) => void;
 }
 
-const Filters: FC<Props> = ({ handleDropDowns, handleInput }) => {
+const Filters: FC<Props> = ({ search, handleDropDowns, handleInput }) => {
   const regionOptions = [
     "Africa",
     "Europe",
@@ -36,7 +37,7 @@ const Filters: FC<Props> = ({ handleDropDowns, handleInput }) => {
         }}
       >
         <Typography component="div" sx={{ display: "flex", gap: "20px" }}>
-          <Input handleInput={handleInput} />
+          <Input search={search} handleInput={handleInput} />
           <DropDown
             size="medium"
             options={regionOptions}

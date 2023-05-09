@@ -50,10 +50,7 @@ const Table: FC<Props> = ({ countries, handleDeleteCountry }) => {
           </TableHead>
           <TableBody>
             {countries?.map((row: IData) => (
-              <TableRow
-                key={row?.country}
-                // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
+              <TableRow key={row?.country}>
                 <TableCell component="th" scope="row">
                   <Typography component="span" sx={{ fontWeight: 600 }}>
                     {row?.country}

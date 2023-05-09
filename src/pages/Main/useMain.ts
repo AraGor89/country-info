@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAllCountries } from "../../api/country";
 import { EDropType, IData } from "../../types";
-import { formatData } from "../../utils";
+import { formatResponseData } from "../../utils";
+import { getAllCountries } from "../../api/country";
 
 const useMain = () => {
   const [search, setSearch] = useState("");
@@ -16,7 +16,7 @@ const useMain = () => {
 
   const handleDropDowns = (value: string | null, type: EDropType) => {
     if (!value && type === EDropType.regions) {
-      // NOTE: can be used as reset
+      // NOTE: when user clicks on 'x' can be used as reset.
       // setCountries(countriesCopy);
       return;
     }
@@ -42,7 +42,7 @@ const useMain = () => {
   useEffect(() => {
     (async () => {
       const response = await getAllCountries();
-      const formattedData = formatData(response?.slice(0, 40));
+      const formattedData = formatResponseData(response?.slice(0, 40));
       setCountries((prevData) => formattedData);
       setCountriesCopy((prevData) => formattedData);
     })();
@@ -58,6 +58,7 @@ const useMain = () => {
     );
 
   return {
+    search,
     finalData,
     sortingField,
     handleInput,
