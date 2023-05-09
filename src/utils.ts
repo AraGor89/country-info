@@ -1,4 +1,5 @@
-export const formatData = (res: any[]) => {
+// TODO: fixe typification
+export function formatData<T>(res: T[]) {
   if (!res?.length) return [];
 
   const data = res?.map((item: any) => {
@@ -12,4 +13,4 @@ export const formatData = (res: any[]) => {
   });
 
   return data;
-};
+}

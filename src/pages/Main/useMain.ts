@@ -4,6 +4,7 @@ import { EDropType, IData } from "../../types";
 import { formatData } from "../../utils";
 
 const useMain = () => {
+  const [search, setSearch] = useState("");
   const [sortingField, setSortingField] = useState<string>("");
   const [countries, setCountries] = useState<IData[] | []>([]);
   const [countriesCopy, setCountriesCopy] = useState<IData[] | []>([]);
@@ -15,7 +16,8 @@ const useMain = () => {
 
   const handleDropDowns = (value: string | null, type: EDropType) => {
     if (!value && type === EDropType.regions) {
-      setCountries(countriesCopy);
+      // NOTE: can be used as reset
+      // setCountries(countriesCopy);
       return;
     }
 
@@ -32,11 +34,9 @@ const useMain = () => {
     }
   };
 
+  // TODO: handle with a delay (debounce function)
   const handleInput = (name: string) => {
-    const newCountries = countriesCopy.filter((item) =>
-      item?.country?.toLowerCase()?.includes(name?.toLowerCase())
-    );
-    setCountries(newCountries);
+    setSearch(name);
   };
 
   useEffect(() => {
@@ -48,10 +48,14 @@ const useMain = () => {
     })();
   }, []);
 
-  const finalData = [...countries].sort(
-    (a: IData, b: IData) =>
-      +a[sortingField as keyof IData] - +b[sortingField as keyof IData]
-  );
+  const finalData = [...countries]
+    .sort(
+      (a: IData, b: IData) =>
+        +a[sortingField as keyof IData] - +b[sortingField as keyof IData]
+    )
+    .filter((item) =>
+      item?.country?.toLowerCase()?.includes(search?.toLowerCase())
+    );
 
   return {
     finalData,

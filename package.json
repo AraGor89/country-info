@@ -1,5 +1,6 @@
 {
   "name": "countries",
+  "homepage": "https://AraGor89.github.io/country-info",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,9 +27,12 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "@types/react-router-dom": "^5.3.3",
+    "gh-pages": "^5.0.0",
     "typescript": "^4.9.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
