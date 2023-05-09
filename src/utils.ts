@@ -1,8 +1,9 @@
-// TODO: fixe typification
-export function formatResponseData<T>(res: T[]) {
+import { IData, IResponseData } from "./types";
+
+export const formatResponseData = (res: IResponseData[]): IData[] => {
   if (!res?.length) return [];
 
-  const data = res?.map((item: any) => {
+  const data = res?.map((item: IResponseData) => {
     return {
       country: item?.name?.common,
       region: item?.region,
@@ -13,4 +14,4 @@ export function formatResponseData<T>(res: T[]) {
   });
 
   return data;
-}
+};
